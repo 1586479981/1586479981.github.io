@@ -10,16 +10,19 @@
 <link type="text/css" rel="stylesheet" href="https://gcore.jsdelivr.net/gh/1586479981/tu@master/wedo1.css" />
 <script src="https://gcore.jsdelivr.net/gh/1586479981/tu@master/jquery.min.js"></script>
 <style>
-#bg-over {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 550%;
-    height: 550%;
-    background: rgba(20,29,36,0.1)url(https://gcore.jsdelivr.net/gh/1586479981/tu@master/pic_b_zl01y.jpg
-) repeat;
-    opacity: 1;
-    z-index: -10086;
+body {
+  /* 设置背景图片路径 */
+  background-image: url('https://gcore.jsdelivr.net/gh/1586479981/tu@master/pic_b_zl01y.jpg'); 
+  /* 背景图不重复 */
+  background-repeat: no-repeat; 
+  /* 背景图居中显示 */
+  background-position: center center; 
+  /* 关键：让背景图自适应容器大小，cover是最常用的选择 */
+  background-size: cover; 
+  /* 可选：背景图固定，不随页面滚动 */
+  background-attachment: fixed; 
+  /* 设置一个背景色，在图片加载前或加载失败时显示 */
+  background-color: #464646; 
 }
 </style>
 </head>
