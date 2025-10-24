@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    .iframe-container {
-      width: 100%; /* 宽度铺满父容器 */
-      max-width: 800px; /* 最大宽度限制（可选） */
-      margin: 0 auto; /* 居中显示 */
-      position: relative;
-      padding-top: 56.25%; /* 16:9 比例（9/16=56.25%），根据内容调整 */
+    /* 清除页面默认边距，确保 iframe 无间隙铺满 */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%; /* 让 html 和 body 高度充满屏幕 */
+      overflow: hidden; /* 隐藏页面滚动条（避免 iframe 内容过长时出现双滚动条） */
     }
-    .responsive-iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+
+    .fullscreen-iframe {
+      width: 100%; /* 宽度铺满 */
+      height: 100%; /* 高度铺满 */
       border: none; /* 移除边框 */
     }
   </style>
 </head>
 <body>
-  <div class="iframe-container">
-    <!-- 替换为你的 iframe 地址 -->
-    <iframe src="https://m3u8player.org/player.html?url=https://testingcf.jsdelivr.net/gh/1586479981/myall@master/myall.m3u8"></iframe>
-  </div>
+  <!-- 替换为你的 iframe 地址 -->
+  <iframe class="fullscreen-iframe" src="https://m3u8player.org/player.html?url=https://testingcf.jsdelivr.net/gh/1586479981/myall@master/myall.m3u8"></iframe>
 </body>
 </html>
