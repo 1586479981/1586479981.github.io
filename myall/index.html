@@ -2,24 +2,29 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* 清除页面默认边距，确保 iframe 无间隙铺满 */
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%; /* 让 html 和 body 高度充满屏幕 */
-      overflow: hidden; /* 隐藏页面滚动条（避免 iframe 内容过长时出现双滚动条） */
-    }
-
-    .fullscreen-iframe {
-      width: 100%; /* 宽度铺满 */
-      height: 100%; /* 高度铺满 */
-      border: none; /* 移除边框 */
-    }
-  </style>
+  <!-- 引入 Video.js 样式 -->
+  <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet">
+  <!-- 引入 Video.js 核心库 -->
+  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+  <!-- 引入 HLS 插件（用于解析 M3U8） -->
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.min.js"></script>
 </head>
 <body>
-  <!-- 替换为你的 iframe 地址 -->
-  <iframe class="fullscreen-iframe" src="https://m3u8player.org/player.html?url=https://testingcf.jsdelivr.net/gh/1586479981/myall@master/myall.m3u8"></iframe>
+  <!-- 播放器容器 -->
+  <video id="my-player" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="100%" height="auto">
+    <!-- 引入 M3U8 视频源 -->
+    <source src="https://testingcf.jsdelivr.net/gh/1586479981/myall@master/myall.m3u8" type="application/x-mpegURL">
+    <!-- 浏览器不支持时的提示 -->
+    您的浏览器不支持 HLS 流媒体播放。
+  </video>
+
+  <script>
+    // 初始化播放器
+    const player = videojs('my-player', {
+      autoplay: false, // 是否自动播放（浏览器通常限制自动播放，需用户交互后触发）
+      responsive: true, // 自适应容器尺寸
+      fluid: true // 按比例自适应宽高
+    });
+  </script>
 </body>
 </html>
