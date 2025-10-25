@@ -1,25 +1,28 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* 清除页面默认边距，确保 iframe 无间隙铺满 */
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%; /* 让 html 和 body 高度充满屏幕 */
-      overflow: hidden; /* 隐藏页面滚动条（避免 iframe 内容过长时出现双滚动条） */
-    }
-
-    .fullscreen-iframe {
-      width: 100%; /* 宽度铺满 */
-      height: 100%; /* 高度铺满 */
-      border: none; /* 移除边框 */
-    }
-  </style>
+    <title>My All</title>
+    <!-- 引入HLS.js库 -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.12/dist/hls.min.js"></script>
 </head>
 <body>
-  <!-- 替换为你的 iframe 地址 -->
-  <iframe class="fullscreen-iframe" src="https://m3u8player.org/player.html?url=https://testingcf.jsdelivr.net/gh/1586479981/myall@master/myall.m3u8"></iframe>
+    <video id="video" controls width=97%; height=97%></video>
+
+    <script>
+        const video = document.getElementById('video');
+        const m3u8Url = 'https://testingcf.jsdelivr.net/gh/walaguaoeu/myall@master/myall.m3u8'; // 替换为你的M3U8地址
+
+        // 检查浏览器支持
+        if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Safari等原生支持HLS的浏览器
+            video.src = m3u8Url;
+        } else if (Hls.isSupported()) {
+            // 其他浏览器使用HLS.js
+            const hls = new Hls();
+            hls.loadSource(m3u8Url);
+            hls.attachMedia(video);
+        } else {
+            alert('您的浏览器不支持HLS视频播放');
+        }
+    </script>
 </body>
 </html>
