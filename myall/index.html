@@ -1,22 +1,16 @@
 <html>
 <head>
     <title>My All</title>
-    <!-- 引入HLS.js库 -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.12/dist/hls.min.js"></script>
 </head>
 <body>
     <video id="video" controls width=97%; height=97%></video>
-
     <script>
         const video = document.getElementById('video');
-        const m3u8Url = 'https://testingcf.jsdelivr.net/gh/walaguaoeu/myall@master/myall.m3u8'; // 替换为你的M3U8地址
-
-        // 检查浏览器支持
+        const m3u8Url = 'https://testingcf.jsdelivr.net/gh/walaguaoeu/myall@master/myall.m3u8'; 
         if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            // Safari等原生支持HLS的浏览器
             video.src = m3u8Url;
         } else if (Hls.isSupported()) {
-            // 其他浏览器使用HLS.js
             const hls = new Hls();
             hls.loadSource(m3u8Url);
             hls.attachMedia(video);
